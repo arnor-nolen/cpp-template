@@ -1,5 +1,8 @@
 # cpp-template
-C++ template project
+C++ template project.
+
+## Dependencies
+Dependencies are listed in [conanfile.py](./conanfile.py).
 
 ## How to build
 ```sh

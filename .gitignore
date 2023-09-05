@@ -1,3 +1,9 @@
+# Conan presets
+ConanPresets.json
+
+# Build files
+build/
+
 # Prerequisites
 *.d
 

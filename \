@@ -1,0 +1,23 @@
+#include <span>
+
+#include <cstdlib>
+#include <example.hpp>
+#include <fmt/format.h>
+
+auto main([[maybe_unused]] int argc, [[maybe_unused]] char *argv[]) -> int {
+
+    auto args = std::span{argv, static_cast<size_t>(argc)};
+
+    if (args.size() > 2) {
+        fmt::print("Usage: {} <your_name>.", args[0]);
+        return EXIT_FAILURE;
+    }
+
+    if (args.size() == 0) {
+        Example{args[1]};
+    }
+
+    auto example = Example{args[1]};
+
+    return EXIT_SUCCESS;
+}

@@ -2,4 +2,4 @@
 
 #include <fmt/format.h>
 
-Example::Example() { fmt::print("Example constructor!\n"); }
+Example::Example(std::string_view text) { fmt::print("Hello, {}!\n", text); }

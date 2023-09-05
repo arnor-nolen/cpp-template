@@ -1,9 +1,11 @@
 #ifndef EXAMPLE_HPP
 #define EXAMPLE_HPP
 
+#include <string_view>
+
 class Example {
   public:
-    explicit Example();
+    explicit Example(std::string_view text);
     ~Example() = default;
 
     Example(const Example &) = delete;

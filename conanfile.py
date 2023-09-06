@@ -24,6 +24,7 @@ class CppTemplate(ConanFile):
     def generate(self):
         deps = CMakeDeps(self)
         deps.generate()
+
         tc = CMakeToolchain(self)
         tc.user_presets_path = "ConanPresets.json"
         if self.settings.build_type == "Debug":

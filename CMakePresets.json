@@ -8,11 +8,18 @@
     "include": ["./ConanPresets.json"],
     "configurePresets": [
         {
+            "name": "multi",
+            "displayName": "multi",
+            "description": "Multi config.",
+            "inherits": "conan-default",
+            "cacheVariables": {
+            }
+        },
+        {
             "name": "debug",
             "displayName": "debug",
-            "description": "Debug config",
+            "description": "Debug config.",
             "inherits": "conan-debug",
-            "binaryDir": "${sourceDir}/build/Debug",
             "cacheVariables": {
                 "CMAKE_EXPORT_COMPILE_COMMANDS": {
                     "type": "BOOL",
@@ -27,24 +34,61 @@
         {
             "name": "release",
             "displayName": "release",
-            "description": "Release config",
+            "description": "Release config.",
             "inherits": "conan-release",
-            "binaryDir": "${sourceDir}/build/Release",
             "cacheVariables": {
             }
         }
     ],
     "buildPresets": [
         {
+            "name": "multi-debug",
+            "configuration": "Debug",
+            "configurePreset": "multi"
+        },
+        {
+            "name": "multi-release",
+            "configuration": "Release",
+            "configurePreset": "multi"
+        },
+        {
             "name": "debug",
+            "configuration": "Debug",
             "configurePreset": "debug"
         },
         {
             "name": "release",
+            "configuration": "Release",
             "configurePreset": "release"
         }
     ],
     "workflowPresets": [
+        {
+            "name": "multi-debug",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "multi"
+                },
+                {
+                    "type": "build",
+                    "name": "multi-debug"
+                }
+            ]
+        },
+        {
+            "name": "multi-release",
+            "steps": [
+                {
+                    "type": "configure",
+                    "name": "multi"
+                },
+                {
+                    "type": "build",
+                    "name": "multi-release"
+                }
+            ]
+        },
         {
             "name": "debug",
             "steps": [

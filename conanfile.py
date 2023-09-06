@@ -19,8 +19,6 @@ class CppTemplate(ConanFile):
     default_options = {"fmt/*:shared": True}
 
     def requirements(self):
-        assert self.requires is not None
-
         self.requires("fmt/10.1.1")
 
     def generate(self):
@@ -28,6 +26,11 @@ class CppTemplate(ConanFile):
         deps.generate()
         tc = CMakeToolchain(self)
         tc.user_presets_path = "ConanPresets.json"
+        if self.settings.build_type == "Debug":
+            tc.cache_variables = {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CMAKE_COLOR_DIAGNOSTICS": "ON",
+            }
         tc.generate()
 
     def layout(self):

@@ -21,14 +21,6 @@
             "description": "Debug config.",
             "inherits": "conan-debug",
             "cacheVariables": {
-                "CMAKE_EXPORT_COMPILE_COMMANDS": {
-                    "type": "BOOL",
-                    "value": "ON"
-                },
-                "CMAKE_COLOR_DIAGNOSTICS": {
-                    "type": "BOOL",
-                    "value": "ON"
-                }
             }
         },
         {

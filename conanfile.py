@@ -1,5 +1,4 @@
 from conan import ConanFile
-from conan.tools.files import copy
 from conan.tools.cmake import cmake_layout, CMakeToolchain
 
 

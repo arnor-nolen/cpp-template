@@ -22,9 +22,6 @@
                     "type": "BOOL",
                     "value": "ON"
                 }
-            },
-            "warnings": {
-                "unusedCli": false
             }
         },
         {
@@ -34,9 +31,6 @@
             "inherits": "conan-release",
             "binaryDir": "${sourceDir}/build/Release",
             "cacheVariables": {
-            },
-            "warnings": {
-                "unusedCli": false
             }
         }
     ],

@@ -2,15 +2,20 @@ cmake_minimum_required(VERSION 3.21)
 project(cpp-template)
 
 # Additional options
-#
-# Prevent command line window from spawning
-#
-# ENABLE_CMD_WINDOW=OFF
+set(ENABLE_CMD_WINDOW
+    ON
+    CACHE BOOL "Enable cmd window on Windows."
+)
 
 # Set binary output directories
-set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib/$<0:>)
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<0:>)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<0:>)
+
+# set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib/$<0:>)
+# set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<0:>)
+# set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/$<0:>)
+
+if(DEFINED CMAKE_POLICY_DEFAULT_CMP0091)
+  cmake_policy(SET CMP0091 ${CMAKE_POLICY_DEFAULT_CMP0091})
+endif()
 
 # Add to find cmake config dependencies
 list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR})

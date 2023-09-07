@@ -27,11 +27,12 @@ class CppTemplate(ConanFile):
 
         tc = CMakeToolchain(self)
         tc.user_presets_path = "ConanPresets.json"
+        vars = {}
         if self.settings.build_type == "Debug":
-            tc.cache_variables = {
-                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
-                "CMAKE_COLOR_DIAGNOSTICS": "ON",
-            }
+            vars["CMAKE_EXPORT_COMPILE_COMMANDS"] = "ON"
+        if tc.generator == "Ninja":
+            vars["CMAKE_COLOR_DIAGNOSTICS"] = "ON"
+        tc.cache_variables = vars
         tc.generate()
 
     def layout(self):

@@ -19,5 +19,5 @@ Check contents of [CMakePresets.json](./CMakePresets.json) for more info.
 
 ## How to run
 ```sh
-./build/Debug/cpp-template
+./build/Debug/bin/cpp-template
 ```

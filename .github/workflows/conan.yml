@@ -25,7 +25,7 @@ jobs:
       run: conan config install profiles
       
     - name: Build in one command
-      run: conan build . -s build_type=${{env.BUILD_TYPE}} --build=missing -pr ${{env.CONAN_PROFILE}}
+      run: conan build . -s build_type=${{env.BUILD_TYPE}} --build=missing -pr:b=${{env.CONAN_PROFILE}} -pr:h=${{env.CONAN_PROFILE}}
 
     - name: Build with CMake workflow
       run: cmake --workflow --preset ${{env.CMAKE_PRESET}}

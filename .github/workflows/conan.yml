@@ -1,4 +1,4 @@
-name: Conan
+name: build
 
 on:
   push:
@@ -11,7 +11,7 @@ env:
 jobs:
   ubuntu-22:
     env:
-      CONAN_PROFILE: ubuntu-22.04
+      CONAN_PROFILE: ubuntu-22
 
     runs-on: ubuntu-22.04
 
@@ -33,9 +33,9 @@ jobs:
 
   windows-2022:
     env:
-      CONAN_PROFILE: windows-2022
+      CONAN_PROFILE: windows-22
 
-    runs-on: windows-2022
+    runs-on: windows-22
 
     steps:
     - name: Checkout

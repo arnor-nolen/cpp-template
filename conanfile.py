@@ -48,7 +48,7 @@ class CppTemplate(ConanFile):
                 "armv8": "ARM64",
             }.get(self.settings.get_safe("arch"))
 
-            toolset = msvs_toolset(conanfile)
+            toolset = msvs_toolset(self)
 
             preset_path = os.path.join(self.generators_folder, "CMakePresets.json")
             replace_in_file(

@@ -7,9 +7,11 @@ on:
 env:
   BUILD_TYPE: Debug
   CMAKE_PRESET: debug
-  CONAN_DEFAULT_PROFILE: ubuntu-22.04
 
 jobs:
+  env:
+    CONAN_PROFILE: ubuntu-22.04
+
   build:
     runs-on: ubuntu-22.04
 
@@ -23,7 +25,7 @@ jobs:
       run: conan config install profiles
       
     - name: Build in one command
-      run: conan build . -s build_type=${{env.BUILD_TYPE}} --build=missing
+      run: conan build . -s build_type=${{env.BUILD_TYPE}} --build=missing -pr=${{env.CONAN_PROFILE}}
 
     - name: Build with CMake workflow
       run: cmake --workflow --preset ${{env.CMAKE_PRESET}}

@@ -1,0 +1,32 @@
+name: Conan
+
+on:
+  push:
+    branches: [ master ]
+  
+env:
+  BUILD_TYPE: Debug
+  CMAKE_PRESET: debug
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Get Conan
+      uses: turtlebrowser/get-conan@v1.2
+      
+    - name: Create default profile
+      run: conan profile new default --detect
+      
+    - name: Update profile
+      run: conan profile update settings.compiler.libcxx=libstdc++11 default
+      run: conan profile update settings.compiler.cppstd=20 default
+      
+    - name: Build in one command
+      run: conan build . -s build_type=${{env.BUILD_TYPE}} --build=missing
+
+    - name: Build with CMake workflow
+      run: cmake --workflow --preset ${{env.CMAKE_PRESET}}

@@ -31,7 +31,7 @@ jobs:
     - name: Build with CMake workflow
       run: cmake --workflow --preset ${{env.CMAKE_PRESET}}
 
-  windows-2022:
+  windows-22:
     env:
       CONAN_PROFILE: windows-22
 

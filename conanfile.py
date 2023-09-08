@@ -3,6 +3,7 @@ from conan import ConanFile
 from conan.tools.files import replace_in_file
 from conan.tools.cmake import cmake_layout, CMake, CMakeDeps, CMakeToolchain
 from conan.tools.microsoft import is_msvc
+from conan.tools.microsoft.toolchain import msvs_toolset
 
 
 class CppTemplate(ConanFile):
@@ -47,7 +48,7 @@ class CppTemplate(ConanFile):
                 "armv8": "ARM64",
             }.get(self.settings.get_safe("arch"))
 
-            toolset = self.conf.get("tools.cmake.cmaketoolchain:toolset_arch")
+            toolset = msvs_toolset(conanfile)
 
             preset_path = os.path.join(self.generators_folder, "CMakePresets.json")
             replace_in_file(

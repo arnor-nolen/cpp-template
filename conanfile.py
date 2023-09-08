@@ -53,8 +53,8 @@ class CppTemplate(ConanFile):
             replace_in_file(
                 self,
                 file_path=preset_path,
-                search='"name": "conan-debug",',
-                replace=f'"name": "conan-debug",\n            "architecture": "{arch}",\n            "toolset": "{toolset}",',
+                search='"name": "conan-default",',
+                replace=f'"name": "conan-default",\n            "architecture": "{arch}",\n            "toolset": "{toolset}",',
             )
 
     def layout(self):

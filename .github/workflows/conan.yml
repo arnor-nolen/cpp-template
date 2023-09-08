@@ -19,7 +19,7 @@ jobs:
       uses: turtlebrowser/get-conan@v1.2
       
     - name: Create default profile
-      run: conan profile new default --detect
+      run: conan profile detect
       
     - name: Update profile
       run: |

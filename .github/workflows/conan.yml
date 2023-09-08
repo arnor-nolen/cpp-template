@@ -20,6 +20,9 @@ jobs:
     
     - name: Get Conan
       uses: turtlebrowser/get-conan@v1.2
+
+    - name: Setup Ninja
+      uses: ashutoshvarma/setup-ninja@v1.1
       
     - name: Build in one command
       run: conan build . -s build_type=${{env.BUILD_TYPE}} --build=missing -pr:b=profiles/${{env.CONAN_PROFILE}} -pr:h=profiles/${{env.CONAN_PROFILE}}

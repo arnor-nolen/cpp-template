@@ -9,7 +9,7 @@ env:
   CMAKE_PRESET: debug
 
 jobs:
-  ubuntu-22.04:
+  ubuntu:
     env:
       CONAN_PROFILE: ubuntu-22.04
 

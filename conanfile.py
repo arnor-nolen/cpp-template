@@ -12,8 +12,8 @@ class CppTemplate(ConanFile):
     package_type = "application"
 
     license = "MIT"
-    author = "Arnor Nolen"
-    url = "https://github.com/arnor-nolen"
+    author = ""
+    url = ""
     description = "C++ template."
     topics = ("C++", "Conan", "Template")
 

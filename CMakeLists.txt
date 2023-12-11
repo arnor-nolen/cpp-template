@@ -39,9 +39,6 @@ list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR})
 # findX.cmake).
 find_package(fmt REQUIRED CONFIG)
 
-# Set C++ standard.
-set(TARGET_COMPILE_FEATURES cxx_std_20)
-
 # -------------------------------------
 # Set compiler-specific stuff.
 # -------------------------------------
@@ -79,15 +76,30 @@ endif()
 
 # Build the main app.
 set(SOURCE_FILES "src/main.cpp" "src/example.cpp")
+
 add_executable(${PROJECT_NAME} ${SOURCE_FILES})
-target_compile_features(${PROJECT_NAME} PUBLIC ${TARGET_COMPILE_FEATURES})
+
+# Set C++ standard.
+target_compile_features(${PROJECT_NAME} PRIVATE cxx_std_20)
+set_target_properties(
+  ${PROJECT_NAME} PROPERTIES CXX_STANDARD_REQUIRED ON CXX_EXTENSIONS OFF
+)
+
+# Enable link-time optimizations if supported by compiler.
+include(CheckIPOSupported)
+check_ipo_supported(RESULT ipo_result OUTPUT ipo_output)
+if(ipo_result)
+  set_property(TARGET ${PROJECT_NAME} PROPERTY INTERPROCEDURAL_OPTIMIZATION_RELEASE TRUE)
+else()
+  message(INFO "IPO is not supported: ${output}. Continuing without IPO.")
+endif()
 
 # Add "include" to the include path.
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 
+# Link libraries.
+target_link_libraries(${PROJECT_NAME} fmt::fmt)
+
 # -------------------------------------
 # End of building executables.
 # -------------------------------------
-
-# Link libraries.
-target_link_libraries(${PROJECT_NAME} fmt::fmt)

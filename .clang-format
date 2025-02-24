@@ -1,6 +1,65 @@
 ---
 BasedOnStyle: LLVM
 IndentWidth: 4
-CommentPragmas:  '^ NOLINT'
+CommentPragmas: '^ NOLINT'
+
+AccessModifierOffset: -4
+AlignOperands: AlignAfterOperator
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortCompoundRequirementOnASingleLine: false
+AllowShortFunctionsOnASingleLine: false
 AlwaysBreakTemplateDeclarations: Yes
+BinPackArguments: false
+BinPackParameters: false
 BreakAfterAttributes: Always
+BreakBeforeBinaryOperators: All
+BreakConstructorInitializers: BeforeComma
+BreakInheritanceList: BeforeComma
+IndentAccessModifiers: false
+IndentRequiresClause: false
+PackConstructorInitializers: Never
+RequiresExpressionIndentation: OuterScope
+
+# BreakBinaryOperationsStyle: OnePerLine # Available in clang-format 20.
+
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterCaseLabel: true
+  AfterClass: true
+  AfterControlStatement: Always
+  AfterEnum: true
+  AfterExternBlock: true
+  AfterFunction: true
+  AfterNamespace: true
+  AfterObjCDeclaration: true
+  AfterStruct: true
+  AfterUnion: true
+  BeforeCatch: true
+  BeforeElse: true
+  BeforeLambdaBody: true
+  BeforeWhile: true
+  IndentBraces: false
+  SplitEmptyFunction: true
+  SplitEmptyRecord: true
+  SplitEmptyNamespace: true
+
+IncludeBlocks: Regroup
+IncludeCategories:
+  - Regex: 'impl\/'
+    Priority: 3
+    SortPriority: 2
+    CaseSensitive: false
+  - Regex: '\.hpp>$'
+    Priority: 2
+    SortPriority: 1
+    CaseSensitive: false
+  - Regex: '.*'
+    Priority: 1
+    SortPriority: 3
+    CaseSensitive: false
+IncludeIsMainRegex: '(Test)?$'
+IncludeIsMainSourceRegex: ''
+MainIncludeChar: AngleBracket
+
+Standard: c++17 # Needed for correct requires clause brace formatting. Broken on c++20 and higher.

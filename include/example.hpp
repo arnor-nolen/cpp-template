@@ -3,8 +3,9 @@
 
 #include <string_view>
 
-class Example {
-  public:
+class Example
+{
+public:
     explicit Example(std::string_view text);
     ~Example() = default;
 

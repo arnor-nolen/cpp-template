@@ -25,7 +25,6 @@ Cpp11BracedListStyle: false
 IndentAccessModifiers: false
 IndentRequiresClause: true
 PackConstructorInitializers: Never
-PenaltyReturnTypeOnItsOwnLine: 9999
 RequiresClausePosition: OwnLine
 RequiresExpressionIndentation: OuterScope
 

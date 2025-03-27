@@ -8,7 +8,7 @@
 auto main(int argc, char *argv[]) -> int
 {
 
-    auto args = std::span{argv, static_cast<size_t>(argc)};
+    auto args = std::span{ argv, static_cast<size_t>(argc) };
 
     if (args.empty())
     {
@@ -24,11 +24,11 @@ auto main(int argc, char *argv[]) -> int
 
     if (args.size() == 1)
     {
-        Example{"world"};
+        Example{ "world" };
         return EXIT_SUCCESS;
     }
 
-    Example{args[1]};
+    Example{ args[1] };
 
     return EXIT_SUCCESS;
 }
